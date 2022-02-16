@@ -6,37 +6,37 @@ import {
   StyleSheet,} from 'react-native';
 
 import InputGroup from "./components/InputGroup";
-import Item from "./components/Item";
+import Item from "./components/Read";
 
 export default function App() {
-	const [productList, setProductList] = useState([]);
+	const [readList, setReadList] = useState([]);
 	const [showModal, setShowModal] = useState(false);
 
-	const addProductHandler = (productName) => {
-		if (productName != "") {
-			setProductList((currentProductList) => [
-				...currentProductList, 
-				{key: Math.random().toString(), value: productName}]);
+	const addReadHandler = (readName) => {
+		if (readName != "") {
+			setReadList((currentReadList) => [
+				...currentReadList, 
+				{key: Math.random().toString(), value: readName}]);
 		} else {
-			console.log("ERROR: No se ha introducido ningún producto.");
+			console.log("ERROR: No se ha introducido ningún libro o cómic.");
 		}
 		setShowModal(false);
 	}
 
-	const deleteProductHandler = (productKey) => {
-		setProductList((currentProductList) => {
-			return currentProductList.filter((product) => product.key != productKey);
+	const deleteReadHandler = (readKey) => {
+		setReadList((currentReadList) => {
+			return currentReadList.filter((read) => read.key != readKey);
 		})
 	}
 
   return (
 	<View style={styles.container}>
 		<Button title="Add" onPress={() => setShowModal(true)}/>
-		<InputGroup addProductHandler={addProductHandler} addMode={showModal}/>
+		<InputGroup addReadHandler={addReadHandler} addMode={showModal}/>
 
 	  	<View style={styles.listContainer}>
-	  		<FlatList data={productList} renderItem={itemData => (
-			  	<Item value={itemData.item.value} onDelete={() => deleteProductHandler(itemData.item.key)}/>
+	  		<FlatList data={readList} renderItem={readData => (
+			  	<Item value={readData.item.value} onDelete={() => deleteReadHandler(readData.item.key)}/>
   			)}/>
 	  	</View>
 	</View>

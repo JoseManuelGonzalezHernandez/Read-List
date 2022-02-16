@@ -1,30 +1,30 @@
 import {useState} from "react";
 import{Button, Modal, TextInput, View, StyleSheet} from "react-native";
 
-const InputGroup = ({addProductHandler, addMode}) => {
-	const [productName, setProductName] = useState("");
+const InputGroup = ({addReadHandler, addMode}) => {
+	const [readName, setReadName] = useState("");
 
-	const productNameHandler = (productText) => {
-		setProductName(productText);
+	const readNameHandler = (readText) => {
+		setReadName(readText);
 	};
 
-	const validateProduct = () => {
-		addProductHandler(productName);
-		setProductName("");
+	const validateRead = () => {
+		addReadHandler(readName);
+		setReadName("");
 	};
 	
   return (
 	<Modal visible={addMode}>
 		<View style={styles.inputGroup}>
 			<TextInput 
-				style={styles.productInput} 
-				placeholder="Add a new product to shopping list"
-				value= {productName}
-				onChangeText={productNameHandler}/>
+				style={styles.readInput} 
+				placeholder="Add a new read to your list..."
+				value= {readName}
+				onChangeText={readNameHandler}/>
 			<Button 
-				style={styles.productButton} 
+				style={styles.readButton} 
 				title="Add"
-				onPress={validateProduct}/>
+				onPress={validateRead}/>
 		</View>
 	</Modal>
   );
@@ -37,13 +37,13 @@ const styles = StyleSheet.create({
 		alignItems: "center", 
 		padding: 15,
 	},
-	productInput: {
+	readInput: {
 		borderBottomColor: "teal",
 		borderWidth: 1,
 		height: 40,
 		width: "75%"
 	},
-	productButton: {
+	readButton: {
 		width: "25%",
 		marginLeft: 8
 	}

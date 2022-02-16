@@ -1,17 +1,17 @@
 import {View, Text, StyleSheet, TouchableHighlight} from "react-native";
 
-const Item = ({value, onDelete}) => {
+const Read = ({value, onDelete}) => {
     return (
         <TouchableHighlight onPress={onDelete}>
 			<View key={Math.random().toString()} >
-				<Text style={styles.listItem}>{value}</Text>
+				<Text style={styles.listRead}>{value}</Text>
 			</View>
 		</TouchableHighlight>
     );
 }
 
 const styles = StyleSheet.create({
-	listItem: {
+	listRead: {
 		height: 60,
 		width: "100%",
 		backgroundColor: "orange",
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default Item;
+export default Read;
