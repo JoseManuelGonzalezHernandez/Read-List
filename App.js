@@ -6,7 +6,7 @@ import {
   StyleSheet,} from 'react-native';
 
 import InputGroup from "./components/InputGroup";
-import Item from "./components/Read";
+import Read from "./components/Read";
 
 export default function App() {
 	const [readList, setReadList] = useState([]);
@@ -31,12 +31,15 @@ export default function App() {
 
   return (
 	<View style={styles.container}>
-		<Button title="Add" onPress={() => setShowModal(true)}/>
+		<View style={styles.button}>
+			<Button title="Add a read" onPress={() => setShowModal(true)}/>
+		</View>
+		
 		<InputGroup addReadHandler={addReadHandler} addMode={showModal}/>
 
 	  	<View style={styles.listContainer}>
 	  		<FlatList data={readList} renderItem={readData => (
-			  	<Item value={readData.item.value} onDelete={() => deleteReadHandler(readData.item.key)}/>
+			  	<Read value={readData.item.value} onDelete={() => deleteReadHandler(readData.item.key)}/>
   			)}/>
 	  	</View>
 	</View>
@@ -45,13 +48,16 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: "#ccc",
+		backgroundColor: "#121212",
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-		height: "80%"
+		height: "100%",
+	},
+	button: {
+		marginTop: 33 // Margin to Notch.
 	},
 	listContainer: {
 		width: "100%",
-		padding: 20
+		padding: 30
 	}
 });

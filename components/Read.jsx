@@ -12,16 +12,15 @@ const Read = ({value, onDelete}) => {
 
 const styles = StyleSheet.create({
 	listRead: {
-		height: 60,
+		textAlign: 'center',
+		color: "white",
+		height: 70,
 		width: "100%",
-		backgroundColor: "orange",
-		justifyContent: 'center',
-		alignItems: 'center',
-		borderWidth: 1,
-		borderColor: "white",
+		backgroundColor: "#000000",
+		borderWidth: 2,
+		borderColor: "grey",
 		shadowColor: "#ccc",
-		borderRadius: 5,
-		margin: 8
+		borderRadius: 9,
 	}
 });
 
