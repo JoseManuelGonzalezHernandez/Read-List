@@ -1,20 +1,27 @@
-import {View, Text, StyleSheet, TouchableHighlight} from "react-native";
+import {View, Text, Button, StyleSheet, TouchableHighlight} from "react-native";
 
-const Read = ({value, onDelete}) => {
+const Read = ({value, deleteReadHandler, keyReadItem}) => {
     return (
-        <TouchableHighlight onPress={onDelete}>
-			<View key={Math.random().toString()} >
-				<Text style={styles.listRead}>{value}</Text>
+        <TouchableHighlight>
+			<View style={styles.list} key={Math.random().toString()}>
+				<Text style={styles.read}>{value}</Text>
+				<Button title="Delete" onPress={() => deleteReadHandler(keyReadItem)}/>
 			</View>
 		</TouchableHighlight>
     );
 }
 
 const styles = StyleSheet.create({
-	listRead: {
+	list: {
+		padding: 10,
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	read: {
 		textAlign: 'center',
 		color: "white",
-		height: 70,
+		height: "80%",
 		width: "100%",
 		backgroundColor: "#000000",
 		borderWidth: 2,
